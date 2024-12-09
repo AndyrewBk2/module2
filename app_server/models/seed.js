@@ -2,16 +2,15 @@ const mongoose = require('mongoose');
 const Trip = require('./travlr');
 const fs = require('fs');
 
-// Load trips data from JSON file
+
 const trips = JSON.parse(fs.readFileSync('./data/trips.json', 'utf8'));
 
-// Seed the database
 const seedDB = async () => {
   try {
-    // Clear existing trips
+   
     await Trip.deleteMany({});
 
-    // Insert new trips data
+    
     await Trip.insertMany(trips);
     console.log('Database seeded successfully!');
   } catch (error) {
